@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from apitest import views
 from product import proviews
+from bug import bugviews
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,4 +29,5 @@ urlpatterns = [
     path("apitest_manage/", views.apitest_manage),
     path("apistep_manage/", views.apistep_manage),
     path("apis_manage/", views.apis_manage),
+    path("bug_manage/", bugviews.bug_manage),
 ]

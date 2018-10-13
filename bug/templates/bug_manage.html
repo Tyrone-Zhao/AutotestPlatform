@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	{% load bootstrap4 %}
+	{% bootstrap_css %}
+	{% bootstrap_javascript %}
+
+	<title>产品自动化测试平台</title>
+</head>
+<body>
+<!-- 导航栏 -->
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+	<div class="container">
+		<a class="navbar-brand" href="#">&nbsp;</a>
+		<ul class="nav justify-content-center"></ul>
+		<ul class="nav justify-content-end">
+			<li class="nav-link"><a style="color:white" href="#">{{ user }}</a></li>
+			<li class="nav-link"><a style="color:white" href="/logout/">退出</a></li>
+		</ul>
+	</div>
+</nav>
+
+<!-- bug列表 -->
+<div class="row" style="padding-top: 70px;">
+	<div class="col-md-11">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>ID</th><th>产品</th><th>bug名称</th><th>bug详情</th><th>解决状态</th><th>严重程度</th><th>创建人</th><th>分配给</th><th>创建时间</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for bug in bugs %}
+				<tr>
+					<td>{{ bug.id }}</td>
+					<td>{{ bug.Product.productname }}</td>
+					<td>{{ bug.bugname }}</td>
+					<td title="{{ bug.bugdetail }}">{{ bug.bugdetail }}</td>
+					<td>{{ bug.bugstatus }}</td>
+					<td>{{ bug.buglevel }}</td>
+					<td>{{ bug.bugcreater }}</td>
+					<td>{{ bug.bugassign }}</td>
+					<td>{{ bug.created_time }}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+</div>
+</body>
+</html>
