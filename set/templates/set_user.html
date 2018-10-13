@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	{% load bootstrap4 %}
+	{% bootstrap_css %}
+	{% bootstrap_javascript %}
+
+	<title>产品自动化测试平台</title>
+	<link rel="stylesheet" type="text/css" href="/static/admin/css/forms.css" />
+
+	<script type="text/javascript" src="/admin/jsi18n/"></script>
+	<script type="text/javascript" src="/static/admin/js/vendor/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/static/admin/js/jquery.init.js"></script>
+	<script type="text/javascript" src="/static/admin/js/core.js"></script>
+	<script type="text/javascript" src="/static/admin/js/admin/RelatedObjectLookups.js"></script>
+	<script type="text/javascript" src="/static/admin/js/actions.js"></script>
+	<script type="text/javascript" src="/static/admin/js/urlify.js"></script>
+	<script type="text/javascript" src="/static/admin/js/prepopulate.js"></script>
+	<script type="text/javascript" src="/static/admin/js/vendor/xregexp/xregexp.js"></script>
+
+	<meta charset="utf-8" name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+	<link rel="stylesheet" type="text/css" href="/static/admin/css/responsive.css" />
+
+	<meta name="robots" content="NONE, NOARCHIVE" />
+
+</head>
+<body role="document">
+<!-- 导航栏 -->
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+	<div class="container">
+		<a class="navbar-brand" href="#">&nbsp;</a>
+		<ul class="nav justify-content-center">
+		</ul>
+		<ul class="nav justify-content-end">
+			<li class="nav-link"><a style="color:white" href="#">{{ user }}</a></li>
+			<li class="nav-link"><a style="color:white" href="/logout/">退出</a></li>
+		</ul>
+	</div>
+</nav>
+
+<div class="row" style="padding-top: 55px;">
+	<div class="col-md-11">
+		<!-- 用户管理 -->
+		<table class="table table-striped" style="table-layout: fixed;">
+			<style type="text/css">
+				td {
+					white-space: nowrap;overflow: hidden;text-overflow: ellipsis;;
+				}
+			</style>
+			<thead>
+				<tr>
+					<th>ID</th><th>用户名</th><th>密码</th><th>邮箱</th><th>最近登录日期</th><th>注册日期</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for user in users %}
+				<tr>
+					<td>{{ user.id }}</td>
+					<td>{{ user.username }}</td>
+					<td>{{ user.password }}</td>
+					<td>{{ user.email }}</td>
+					<td>{{ user.last_login }}</td>
+					<td>{{ user.date_joined }}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+</div>
+</body>
+</html>
