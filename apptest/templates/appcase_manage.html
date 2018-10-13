@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	{% load bootstrap4 %}
+	{% bootstrap_css %}
+	{% bootstrap_javascript %}
+
+	<title>产品自动化测试平台</title>
+</head>
+<body role="document">
+<!-- 导航栏 -->
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+	<div class="container">
+		<a class="navbar-brand" href="#">&nbsp;</a>
+		<ul class="nav justify-content-center">
+		</ul>
+		<ul class="nav justify-content-end">
+			<li class="nav-link"><a style="color:white" href="#">{{ user }}</a></li>
+			<li class="nav-link"><a style="color:white" href="/logout/">退出</a></li>
+		</ul>
+	</div>
+</nav>
+<!-- app测试用例列表 -->
+<div class="row" style="padding-top: 70px;">
+	<div class="col-md-11">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>ID</th><th>产品</th><th>测试用例名称</th><th>测试结果</th><th>测试负责人</th><th>时间</th><th>测试用例步骤</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for appcase in appcases %}
+				<tr>
+					<td>{{ appcase.id }}</td>
+					<td>{{ appcase.Product.productname }}</td>
+					<td>{{ appcase.appcasename }}</td>
+					<td>{{ appcase.apptestresult }}</td>
+					<td>{{ appcase.apptester }}</td>
+					<td>{{ appcase.create_time }}</td>
+					<td><a href="#">{{ appcase.appcasestep }}</a></td>
+					<td>{{ appcase.appcasestep }}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+</div>
+</body>
+</html>

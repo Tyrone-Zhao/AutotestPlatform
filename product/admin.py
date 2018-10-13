@@ -1,6 +1,7 @@
 from django.contrib import admin
 from product.models import Product
 from apitest.models import Apitest, Apis
+from apptest.models import Appcase
 
 
 class ProductAdmin(admin.ModelAdmin):
@@ -20,4 +21,15 @@ class ApisAdmin(admin.TabularInline):
 class ProductAdmin(admin.ModelAdmin):
 	list_display = ['productname', 'productdesc', 'create_time', 'id']
 	inlines = [ApisAdmin]
+		
+
+class AppcaseAdmin(admin.TabularInline):
+	list_display = ["appcasename", "apptestresult", "create_time", "id", "product"]
+	model = Appcase
+	extra = 1
+
+
+class ProductAdmin(admin.ModelAdmin):
+	list_display = ["productname", "productdesc", "create_time", "id"]
+	inlines = [AppcaseAdmin]
 		
