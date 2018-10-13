@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<title>自动化测试平台</title>
+</head>
+<body role="document">
+<!-- 导航栏 -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+	<div class="container">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="#">自动化测试平台</a>
+		</div>
+		<div id="navbar" class="collapse navbar-collapse">
+			<ul class="nav navbar-nav">
+				<li><a href="/apitest_manage/">流程接口测试</a></li>
+				<li class="active"><a href="/apistep_manage/">流程接口测试步骤</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="#">{{ user }}</a></li>
+				<li><a href="/logout/">退出</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+
+
+<!-- 流程接口测试步骤 -->
+<div class="row" style="padding-top: 20px;">
+	<div class="col-md-11">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>所属产品</th><th>所属用例</th><th>步骤</th><th>URL地址</th><th>参数=值</th><th>方法</th><th>预期结果</th><th>测试结果</th><th>执行时间</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for apistep in apisteps %}
+				<tr>
+					<td>{{ apistep.Apitest.Product.productname }}</td>
+					<td>case{{ apistep.Apitest.id }}:{{ apistep.Apitest.apitestname }}</td>
+					<td>{{ apistep.apistep }}:{{ apistep.apiname }}</td>
+					<td>{{ apistep.apiurl }}</td>
+					<td>{{ apistep.apiparamvalue }}</td>
+					<td>{{ apistep.apimethod }}</td>
+					<td>{{ apistep.apiresult }}</td>
+					<td>{% if apistep.apistatus == 1 %}
+					<a style="color:green">{{ apistep.apistatus }}</a>
+					{% else %}
+					<a style="color:red">{{ apistep.apistatus }}</a>
+					{% endif %}
+					</td>
+					<td>{{ apistep.create_time }}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+</div>
+</body>
+</html>
