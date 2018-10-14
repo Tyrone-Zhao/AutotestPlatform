@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from apitest import views
 from apptest import appviews
+from webtest import webviews
 from product import proviews
 from bug import bugviews
 from set import setviews
@@ -37,4 +38,6 @@ urlpatterns = [
     path("user/", setviews.set_user),
     path("appcase_manage/", appviews.appcase_manage),
     path("appcasestep_manage/", appviews.appcasestep_manage),
+    path("webcase_manage/", webviews.webcase_manage),
+    path("webcasestep_manage/", webviews.webcasestep_manage),
 ]
